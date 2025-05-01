@@ -6,7 +6,7 @@ struct CharacterBackgroundView: View {
 
     var body: some View {
         ZStack {
-            // ✅ Ensure only ONE background shows
+            // Ensure only ONE background shows
             if let character = gameManager.selectedCharacter {
                 Image(character == "Aldreic" ? "Aldric" : "Thane")
                     .resizable()
@@ -15,7 +15,7 @@ struct CharacterBackgroundView: View {
             }
 
             VStack {
-                // ✅ Ensure only ONE story shows
+                // Ensure only ONE story shows
                 Text(gameManager.selectedCharacter == "Aldreic" ? aldreicStory : thaneStory)
                     .font(.system(size: 22)).bold()
                     .foregroundColor(.white)
@@ -35,9 +35,9 @@ struct CharacterBackgroundView: View {
                 .offset(y:200)
             }
         }
-        .contentShape(Rectangle())  // ✅ Makes the whole screen tappable
+        .contentShape(Rectangle())  // Makes the whole screen tappable
                 .onTapGesture {
-                    navigateToStory = true  // ✅ Navigate when tapped anywhere
+                    navigateToStory = true  // Navigate when tapped anywhere
                 }
         .navigationDestination(isPresented: $navigateToStory) {
             ScreenOne().environmentObject(gameManager)
