@@ -18,19 +18,19 @@ class GameManager: ObservableObject {
             do {
                 let data = try Data(contentsOf: url)
                 
-                // ✅ Print raw JSON before decoding
+                // Print raw JSON before decoding
 //                if let jsonString = String(data: data, encoding: .utf8) {
 //                    print("📜 Raw JSON: \(jsonString)")
 //                }
 
                 let decodedData = try JSONDecoder().decode([String: [String: StoryNode]].self, from: data)
                 self.story = decodedData
-                print("✅ Story JSON Loaded Successfully")
+                print("Story JSON Loaded Successfully")
             } catch {
-                print("❌ Error Decoding JSON: \(error.localizedDescription)")
+                print("Error Decoding JSON: \(error.localizedDescription)")
             }
         } else {
-            print("❌ story.json NOT found in the bundle")
+            print("story.json NOT found in the bundle")
         }
     }
 
@@ -55,29 +55,29 @@ class GameManager: ObservableObject {
                 print("💀 Game Over: Player died choosing '\(choice)'")
             } else {
                 if story[character]?[nextScene] != nil {
-                    print("✅ Moving to Scene: \(nextScene)")  // ✅ Debugging log
+                    print("Moving to Scene: \(nextScene)")  //  Debugging log
                     currentStoryNode = nextScene
                 } else {
-                    print("❌ ERROR: Scene '\(nextScene)' not found in JSON!")
+                    print("ERROR: Scene '\(nextScene)' not found in JSON!")
                 }
             }
         } else {
-            print("❌ ERROR: Invalid choice '\(choice)' at node '\(currentStoryNode)'")
+            print("ERROR: Invalid choice '\(choice)' at node '\(currentStoryNode)'")
         }
     }
     
     
     
     func resetGame() {
-        print("🔄 Game Reset Triggered!")  // ✅ Log reset call
+        print("Game Reset Triggered!")  //  Log reset call
         selectedCharacter = nil
         currentStoryNode = "start"
         showingOutcome = false
         selectedOutcome = nil
         isGameOver = false
-        goToWelcomeScreen = true  // ✅ Signal navigation reset
+        goToWelcomeScreen = true  //  Signal navigation reset
         loadStory()
-        print("✅ GameManager: goToWelcomeScreen = \(goToWelcomeScreen)")  // ✅ Log the flag
+        print(" GameManager: goToWelcomeScreen = \(goToWelcomeScreen)")  //  Log the flag
     }
 
 
