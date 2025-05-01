@@ -88,7 +88,7 @@ struct ScreenOne: View {
 
                 Spacer()
 
-                // ✅ Restored BottomView for Story Text
+                //  Restored BottomView for Story Text
                 if !gameManager.isGameOver,
                     let character = gameManager.selectedCharacter,
                    let storyText = gameManager.story[character]?[gameManager.currentStoryNode]?.text {
@@ -132,7 +132,7 @@ struct ScreenOne: View {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let window = scene.windows.first {
-                print("🎯 ScreenOne: Forcing reset to WelcomeScreen!")  // ✅ Debug navigation
+                print(" ScreenOne: Forcing reset to WelcomeScreen!")  //  Debug navigation
                 window.rootViewController = UIHostingController(rootView: WelcomeScreen().environmentObject(GameManager()))
                 window.makeKeyAndVisible()
             }
