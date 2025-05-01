@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PlayerSelectionView: View {
-    @EnvironmentObject var gameManager: GameManager  // ✅ Use EnvironmentObject
+    @EnvironmentObject var gameManager: GameManager  //  Use EnvironmentObject
     @State private var navigateToBackground = false
 
     var body: some View {
@@ -50,7 +50,7 @@ struct PlayerSelectionView: View {
                 
                 VStack(spacing: 25) {
                     Button(action: {
-                        gameManager.selectCharacter("Aldreic") // ✅ Save selection
+                        gameManager.selectCharacter("Aldreic") // Save selection
                         navigateToBackground = true
                     }) {
                         Image("PlayerButton")
@@ -70,7 +70,7 @@ struct PlayerSelectionView: View {
                     }
                     
                     Button(action: {
-                        gameManager.selectCharacter("Thane") // ✅ Save selection
+                        gameManager.selectCharacter("Thane") //  Save selection
                         navigateToBackground = true
                     }) {
                         Image("PlayerButton")
@@ -92,7 +92,7 @@ struct PlayerSelectionView: View {
 
             }
             .navigationDestination(isPresented: $navigateToBackground) {
-                CharacterBackgroundView().environmentObject(gameManager) // ✅ Fix navigation
+                CharacterBackgroundView().environmentObject(gameManager) //  Fix navigation
             }
         }
     }
